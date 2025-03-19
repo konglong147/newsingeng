@@ -3,7 +3,7 @@ package network
 import (
 	"strings"
 
-	E "github.com/sagernet/sing/common/exceptions"
+	E "github.com/konglong147/newsingeng/common/exceptions"
 )
 
 var ErrUnknownNetwork = E.New("unknown network")

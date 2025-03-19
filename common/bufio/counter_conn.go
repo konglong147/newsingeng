@@ -4,10 +4,10 @@ import (
 	"io"
 	"net"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/buf"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/konglong147/newsingeng/common"
+	"github.com/konglong147/newsingeng/common/atomic"
+	"github.com/konglong147/newsingeng/common/buf"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 func NewInt64CounterConn(conn net.Conn, readCounter []*atomic.Int64, writeCounter []*atomic.Int64) *CounterConn {

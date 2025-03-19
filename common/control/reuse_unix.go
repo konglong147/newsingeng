@@ -5,7 +5,7 @@ package control
 import (
 	"syscall"
 
-	E "github.com/sagernet/sing/common/exceptions"
+	E "github.com/konglong147/newsingeng/common/exceptions"
 
 	"golang.org/x/sys/unix"
 )

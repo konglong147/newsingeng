@@ -3,9 +3,9 @@ package bufio
 import (
 	"io"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/konglong147/newsingeng/common"
+	"github.com/konglong147/newsingeng/common/buf"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 type ChunkReader struct {

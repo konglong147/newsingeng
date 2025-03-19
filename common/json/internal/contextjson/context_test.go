@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/sagernet/sing/common/json/internal/contextjson"
+	"github.com/konglong147/newsingeng/common/json/internal/contextjson"
 
 	"github.com/stretchr/testify/require"
 )

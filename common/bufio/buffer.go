@@ -4,8 +4,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
+	"github.com/konglong147/newsingeng/common"
+	"github.com/konglong147/newsingeng/common/buf"
 )
 
 type BufferedWriter struct {

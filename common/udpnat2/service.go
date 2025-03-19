@@ -5,12 +5,12 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/sagernet/sing/common"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/pipe"
-	"github.com/sagernet/sing/contrab/freelru"
-	"github.com/sagernet/sing/contrab/maphash"
+	"github.com/konglong147/newsingeng/common"
+	M "github.com/konglong147/newsingeng/common/metadata"
+	N "github.com/konglong147/newsingeng/common/network"
+	"github.com/konglong147/newsingeng/common/pipe"
+	"github.com/konglong147/newsingeng/contrab/freelru"
+	"github.com/konglong147/newsingeng/contrab/maphash"
 )
 
 type Service struct {

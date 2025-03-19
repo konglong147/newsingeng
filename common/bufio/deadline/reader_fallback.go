@@ -4,8 +4,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/buf"
+	"github.com/konglong147/newsingeng/common/atomic"
+	"github.com/konglong147/newsingeng/common/buf"
 )
 
 type fallbackReader struct {

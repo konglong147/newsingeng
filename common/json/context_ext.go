@@ -3,7 +3,7 @@ package json
 import (
 	"context"
 
-	"github.com/sagernet/sing/common/json/internal/contextjson"
+	"github.com/konglong147/newsingeng/common/json/internal/contextjson"
 )
 
 var (

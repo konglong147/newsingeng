@@ -3,7 +3,7 @@ package json
 import (
 	"reflect"
 
-	"github.com/sagernet/sing/common"
+	"github.com/konglong147/newsingeng/common"
 )
 
 func ObjectKeys(object reflect.Type) []string {

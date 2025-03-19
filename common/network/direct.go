@@ -1,8 +1,8 @@
 package network
 
 import (
-	"github.com/sagernet/sing/common/buf"
-	M "github.com/sagernet/sing/common/metadata"
+	"github.com/konglong147/newsingeng/common/buf"
+	M "github.com/konglong147/newsingeng/common/metadata"
 )
 
 type ReadWaitable interface {

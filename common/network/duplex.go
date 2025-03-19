@@ -1,7 +1,7 @@
 package network
 
 import (
-	"github.com/sagernet/sing/common"
+	"github.com/konglong147/newsingeng/common"
 )
 
 type ReadCloser interface {

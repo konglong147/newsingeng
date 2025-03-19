@@ -5,10 +5,10 @@ import (
 	"net"
 	"syscall"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/konglong147/newsingeng/common"
+	"github.com/konglong147/newsingeng/common/buf"
+	M "github.com/konglong147/newsingeng/common/metadata"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 func NewVectorisedWriter(writer io.Writer) N.VectorisedWriter {

@@ -4,8 +4,8 @@ import (
 	"net"
 	"net/netip"
 
-	"github.com/sagernet/sing/common"
-	M "github.com/sagernet/sing/common/metadata"
+	"github.com/konglong147/newsingeng/common"
+	M "github.com/konglong147/newsingeng/common/metadata"
 )
 
 func LocalAddrs() ([]netip.Addr, error) {

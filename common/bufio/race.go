@@ -4,8 +4,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/sagernet/sing/common/buf"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/konglong147/newsingeng/common/buf"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 type RaceWriter struct {

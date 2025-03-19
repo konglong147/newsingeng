@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"context"
 
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/json"
+	E "github.com/konglong147/newsingeng/common/exceptions"
+	"github.com/konglong147/newsingeng/common/json"
 )
 
 func Decode(ctx context.Context, content []byte) (any, error) {

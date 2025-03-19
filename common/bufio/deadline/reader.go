@@ -5,10 +5,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/bufio"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/konglong147/newsingeng/common/atomic"
+	"github.com/konglong147/newsingeng/common/buf"
+	"github.com/konglong147/newsingeng/common/bufio"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 type TimeoutReader interface {

@@ -4,8 +4,8 @@ import (
 	"io"
 	"net"
 
-	"github.com/sagernet/sing/common"
-	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/konglong147/newsingeng/common"
+	E "github.com/konglong147/newsingeng/common/exceptions"
 )
 
 type HandshakeFailure interface {

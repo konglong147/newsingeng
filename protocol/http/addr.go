@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	M "github.com/sagernet/sing/common/metadata"
+	M "github.com/konglong147/newsingeng/common/metadata"
 )
 
 func SourceAddress(request *http.Request) M.Socksaddr {

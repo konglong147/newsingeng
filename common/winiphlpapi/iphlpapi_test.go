@@ -8,9 +8,9 @@ import (
 	"syscall"
 	"testing"
 
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/winiphlpapi"
+	M "github.com/konglong147/newsingeng/common/metadata"
+	N "github.com/konglong147/newsingeng/common/network"
+	"github.com/konglong147/newsingeng/common/winiphlpapi"
 
 	"github.com/stretchr/testify/require"
 )

@@ -8,12 +8,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/canceler"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/pipe"
-	"github.com/sagernet/sing/contrab/freelru"
+	"github.com/konglong147/newsingeng/common/buf"
+	"github.com/konglong147/newsingeng/common/canceler"
+	M "github.com/konglong147/newsingeng/common/metadata"
+	N "github.com/konglong147/newsingeng/common/network"
+	"github.com/konglong147/newsingeng/common/pipe"
+	"github.com/konglong147/newsingeng/contrab/freelru"
 )
 
 type Conn interface {

@@ -9,7 +9,7 @@ import (
 	"syscall"
 	_ "unsafe"
 
-	F "github.com/sagernet/sing/common/format"
+	F "github.com/konglong147/newsingeng/common/format"
 )
 
 // Deprecated: wtf is this?

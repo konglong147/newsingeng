@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	N "github.com/sagernet/sing/common/network"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 // Deadline is an abstraction for handling timeouts.

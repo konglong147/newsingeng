@@ -4,7 +4,7 @@ import (
 	"net"
 	"net/netip"
 
-	E "github.com/sagernet/sing/common/exceptions"
+	E "github.com/konglong147/newsingeng/common/exceptions"
 )
 
 var _ InterfaceFinder = (*DefaultInterfaceFinder)(nil)

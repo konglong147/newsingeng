@@ -7,13 +7,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/cache"
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/pipe"
+	"github.com/konglong147/newsingeng/common"
+	"github.com/konglong147/newsingeng/common/buf"
+	"github.com/konglong147/newsingeng/common/cache"
+	E "github.com/konglong147/newsingeng/common/exceptions"
+	M "github.com/konglong147/newsingeng/common/metadata"
+	N "github.com/konglong147/newsingeng/common/network"
+	"github.com/konglong147/newsingeng/common/pipe"
 )
 
 // Deprecated: Use N.UDPConnectionHandler instead.

@@ -3,7 +3,7 @@ package bufio
 import (
 	"io"
 
-	N "github.com/sagernet/sing/common/network"
+	N "github.com/konglong147/newsingeng/common/network"
 )
 
 func CreateReadWaiter(reader io.Reader) (N.ReadWaiter, bool) {

@@ -3,7 +3,7 @@ package exceptions
 import (
 	"errors"
 
-	"github.com/sagernet/sing/common"
+	"github.com/konglong147/newsingeng/common"
 )
 
 // Deprecated: Use errors.Unwrap instead.
