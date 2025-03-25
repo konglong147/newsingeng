@@ -10,14 +10,14 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/sagernet/quic-go"
-	"github.com/sagernet/quic-go/http3"
-	"github.com/sagernet/sing-dns"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/bufio"
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/newsingeng/quic-go"
+	"github.com/newsingeng/quic-go/http3"
+	"github.com/newsingeng/sing-dns"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/bufio"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
 
 	mDNS "github.com/miekg/dns"
 )

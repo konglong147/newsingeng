@@ -7,11 +7,11 @@ import (
 	"os"
 	"strings"
 
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/protocol/socks/socks4"
-	"github.com/sagernet/sing/protocol/socks/socks5"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
+	"github.com/newsingeng/sing/protocol/socks/socks4"
+	"github.com/newsingeng/sing/protocol/socks/socks5"
 )
 
 type Version uint8

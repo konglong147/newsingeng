@@ -1,8 +1,8 @@
 package packetaddr
 
 import (
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
 )
 
 const SeqPacketMagicAddress = "sp.packet-addr.v2fly.arpa"

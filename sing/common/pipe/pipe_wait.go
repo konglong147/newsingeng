@@ -5,8 +5,8 @@ import (
 	"net"
 	"os"
 
-	"github.com/sagernet/sing/common/buf"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/newsingeng/sing/common/buf"
+	N "github.com/newsingeng/sing/common/network"
 )
 
 var _ N.ReadWaiter = (*pipe)(nil)

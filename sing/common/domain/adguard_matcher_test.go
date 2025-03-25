@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/sagernet/sing/common/domain"
+	"github.com/newsingeng/sing/common/domain"
 
 	"github.com/stretchr/testify/require"
 )

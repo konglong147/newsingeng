@@ -1,4 +1,4 @@
-module github.com/sagernet/sing
+module github.com/newsingeng/sing
 
 go 1.20
 

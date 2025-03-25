@@ -1,6 +1,6 @@
 package dns
 
-import F "github.com/sagernet/sing/common/format"
+import F "github.com/newsingeng/sing/common/format"
 
 const (
 	RCodeSuccess        RCodeError = 0 // NoError

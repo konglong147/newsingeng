@@ -1,8 +1,8 @@
 package badoption
 
 import (
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/json"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/json"
 )
 
 type Listable[T any] []T

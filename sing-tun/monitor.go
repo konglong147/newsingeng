@@ -3,9 +3,9 @@ package tun
 import (
 	"net/netip"
 
-	"github.com/sagernet/sing/common/control"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/x/list"
+	"github.com/newsingeng/sing/common/control"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/x/list"
 )
 
 var ErrNoRoute = E.New("no route to internet")

@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/sagernet/sing/common"
+	"github.com/newsingeng/sing/common"
 )
 
 func IsFile(path string) bool {

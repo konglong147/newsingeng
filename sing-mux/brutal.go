@@ -4,10 +4,10 @@ import (
 	"encoding/binary"
 	"io"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/rw"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/buf"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/rw"
 )
 
 const (

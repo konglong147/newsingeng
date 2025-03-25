@@ -7,18 +7,18 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sagernet/sing-tun/internal/clashtcpip"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/control"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/logger"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/udpnat"
+	"github.com/newsingeng/sing-tun/internal/clashtcpip"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/control"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/logger"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
+	"github.com/newsingeng/sing/common/udpnat"
 )
 
-var ErrIncludeAllNetworks = E.New("`system` and `mixed` stack are not available when `includeAllNetworks` is enabled. See https://github.com/SagerNet/sing-tun/issues/25")
+var ErrIncludeAllNetworks = E.New("`system` and `mixed` stack are not available when `includeAllNetworks` is enabled. See https://github.com/newsingeng/sing-tun/issues/25")
 
 type System struct {
 	ctx                context.Context

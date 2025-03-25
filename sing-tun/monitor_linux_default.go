@@ -3,7 +3,7 @@
 package tun
 
 import (
-	"github.com/sagernet/netlink"
+	"github.com/newsingeng/netlink"
 
 	"golang.org/x/sys/unix"
 )

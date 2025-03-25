@@ -12,16 +12,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/quic-go"
-	"github.com/sagernet/quic-go/quicvarint"
-	"github.com/sagernet/sing-quic/hysteria2/internal/protocol"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/cache"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/pipe"
+	"github.com/newsingeng/quic-go"
+	"github.com/newsingeng/quic-go/quicvarint"
+	"github.com/newsingeng/sing-quic/hysteria2/internal/protocol"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/atomic"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/cache"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
+	"github.com/newsingeng/sing/common/pipe"
 )
 
 var udpMessagePool = sync.Pool{

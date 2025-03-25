@@ -5,10 +5,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/sagernet/quic-go"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/newsingeng/quic-go"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/buf"
+	E "github.com/newsingeng/sing/common/exceptions"
 )
 
 const (

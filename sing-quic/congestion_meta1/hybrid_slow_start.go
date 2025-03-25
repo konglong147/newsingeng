@@ -3,7 +3,7 @@ package congestion
 import (
 	"time"
 
-	"github.com/sagernet/quic-go/congestion"
+	"github.com/newsingeng/quic-go/congestion"
 )
 
 // Note(pwestin): the magic clamping numbers come from the original code in

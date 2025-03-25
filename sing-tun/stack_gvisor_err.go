@@ -5,9 +5,9 @@ package tun
 import (
 	"net"
 
-	"github.com/sagernet/gvisor/pkg/tcpip"
-	"github.com/sagernet/gvisor/pkg/tcpip/adapters/gonet"
-	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/newsingeng/gvisor/pkg/tcpip"
+	"github.com/newsingeng/gvisor/pkg/tcpip/adapters/gonet"
+	E "github.com/newsingeng/sing/common/exceptions"
 )
 
 type gTCPConn struct {

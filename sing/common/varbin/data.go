@@ -5,11 +5,11 @@ import (
 	"io"
 	"reflect"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/binary"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/bufio"
-	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/binary"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/bufio"
+	E "github.com/newsingeng/sing/common/exceptions"
 )
 
 func Read(r io.Reader, order binary.ByteOrder, rawData any) error {

@@ -3,10 +3,10 @@ package tun
 import (
 	"sync"
 
-	"github.com/sagernet/sing-tun/internal/winipcfg"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/logger"
-	"github.com/sagernet/sing/common/x/list"
+	"github.com/newsingeng/sing-tun/internal/winipcfg"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/logger"
+	"github.com/newsingeng/sing/common/x/list"
 
 	"golang.org/x/sys/windows"
 )

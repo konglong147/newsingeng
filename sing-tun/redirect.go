@@ -3,8 +3,8 @@ package tun
 import (
 	"context"
 
-	"github.com/sagernet/sing/common/control"
-	"github.com/sagernet/sing/common/logger"
+	"github.com/newsingeng/sing/common/control"
+	"github.com/newsingeng/sing/common/logger"
 
 	"go4.org/netipx"
 )

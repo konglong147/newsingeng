@@ -6,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/sagernet/sing/common/domain"
+	"github.com/newsingeng/sing/common/domain"
 
 	"github.com/stretchr/testify/require"
 )
@@ -14,7 +14,7 @@ import (
 func TestMatcher(t *testing.T) {
 	t.Parallel()
 	testDomain := []string{"example.com", "example.org"}
-	testDomainSuffix := []string{".com.cn", ".org.cn", "sagernet.org"}
+	testDomainSuffix := []string{".com.cn", ".org.cn", "newsingeng.org"}
 	matcher := domain.NewMatcher(testDomain, testDomainSuffix, false)
 	require.NotNil(t, matcher)
 	require.True(t, matcher.Match("example.com"))
@@ -24,8 +24,8 @@ func TestMatcher(t *testing.T) {
 	require.True(t, matcher.Match("example.org.cn"))
 	require.False(t, matcher.Match("com.cn"))
 	require.False(t, matcher.Match("org.cn"))
-	require.True(t, matcher.Match("sagernet.org"))
-	require.True(t, matcher.Match("sing-box.sagernet.org"))
+	require.True(t, matcher.Match("newsingeng.org"))
+	require.True(t, matcher.Match("sing-box.newsingeng.org"))
 	dDomain, dDomainSuffix := matcher.Dump()
 	require.Equal(t, testDomain, dDomain)
 	require.Equal(t, testDomainSuffix, dDomainSuffix)
@@ -34,7 +34,7 @@ func TestMatcher(t *testing.T) {
 func TestMatcherLegacy(t *testing.T) {
 	t.Parallel()
 	testDomain := []string{"example.com", "example.org"}
-	testDomainSuffix := []string{".com.cn", ".org.cn", "sagernet.org"}
+	testDomainSuffix := []string{".com.cn", ".org.cn", "newsingeng.org"}
 	matcher := domain.NewMatcher(testDomain, testDomainSuffix, true)
 	require.NotNil(t, matcher)
 	require.True(t, matcher.Match("example.com"))
@@ -44,8 +44,8 @@ func TestMatcherLegacy(t *testing.T) {
 	require.True(t, matcher.Match("example.org.cn"))
 	require.False(t, matcher.Match("com.cn"))
 	require.False(t, matcher.Match("org.cn"))
-	require.True(t, matcher.Match("sagernet.org"))
-	require.True(t, matcher.Match("sing-box.sagernet.org"))
+	require.True(t, matcher.Match("newsingeng.org"))
+	require.True(t, matcher.Match("sing-box.newsingeng.org"))
 	dDomain, dDomainSuffix := matcher.Dump()
 	require.Equal(t, testDomain, dDomain)
 	require.Equal(t, testDomainSuffix, dDomainSuffix)

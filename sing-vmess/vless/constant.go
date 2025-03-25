@@ -3,7 +3,7 @@ package vless
 import (
 	"bytes"
 
-	"github.com/sagernet/sing/common/buf"
+	"github.com/newsingeng/sing/common/buf"
 )
 
 var (

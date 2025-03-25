@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/sagernet/sing/common"
-	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/newsingeng/sing/common"
+	E "github.com/newsingeng/sing/common/exceptions"
 )
 
 type Option[T any] func(b *Batch[T])

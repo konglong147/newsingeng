@@ -7,11 +7,11 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/sagernet/fswatch"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/abx"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/logger"
+	"github.com/newsingeng/fswatch"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/abx"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/logger"
 )
 
 type packageManager struct {

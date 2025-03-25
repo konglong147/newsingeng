@@ -3,10 +3,10 @@
 package tun
 
 import (
-	"github.com/sagernet/gvisor/pkg/buffer"
-	"github.com/sagernet/gvisor/pkg/tcpip"
-	"github.com/sagernet/gvisor/pkg/tcpip/header"
-	"github.com/sagernet/gvisor/pkg/tcpip/stack"
+	"github.com/newsingeng/gvisor/pkg/buffer"
+	"github.com/newsingeng/gvisor/pkg/tcpip"
+	"github.com/newsingeng/gvisor/pkg/tcpip/header"
+	"github.com/newsingeng/gvisor/pkg/tcpip/stack"
 )
 
 var _ GVisorTun = (*NativeTun)(nil)

@@ -13,7 +13,7 @@ linters-settings:
     custom-order: true
     sections:
       - standard
-      - prefix(github.com/sagernet/)
+      - prefix(github.com/newsingeng/)
       - default
 
 run:

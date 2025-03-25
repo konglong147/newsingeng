@@ -1,11 +1,11 @@
 package tuic
 
 import (
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/auth"
-	"github.com/sagernet/sing/common/canceler"
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/auth"
+	"github.com/newsingeng/sing/common/canceler"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
 )
 
 func (s *serverSession[U]) loopMessages() {

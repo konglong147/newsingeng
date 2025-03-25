@@ -5,8 +5,8 @@ import (
 	"net"
 	"reflect"
 
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/smux"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/smux"
 
 	"github.com/hashicorp/yamux"
 )

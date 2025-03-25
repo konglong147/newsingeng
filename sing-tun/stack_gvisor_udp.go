@@ -11,17 +11,17 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/sagernet/gvisor/pkg/buffer"
-	"github.com/sagernet/gvisor/pkg/tcpip"
-	"github.com/sagernet/gvisor/pkg/tcpip/adapters/gonet"
-	"github.com/sagernet/gvisor/pkg/tcpip/checksum"
-	"github.com/sagernet/gvisor/pkg/tcpip/header"
-	"github.com/sagernet/gvisor/pkg/tcpip/stack"
-	"github.com/sagernet/sing/common/buf"
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/udpnat"
+	"github.com/newsingeng/gvisor/pkg/buffer"
+	"github.com/newsingeng/gvisor/pkg/tcpip"
+	"github.com/newsingeng/gvisor/pkg/tcpip/adapters/gonet"
+	"github.com/newsingeng/gvisor/pkg/tcpip/checksum"
+	"github.com/newsingeng/gvisor/pkg/tcpip/header"
+	"github.com/newsingeng/gvisor/pkg/tcpip/stack"
+	"github.com/newsingeng/sing/common/buf"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
+	"github.com/newsingeng/sing/common/udpnat"
 )
 
 type UDPForwarder struct {

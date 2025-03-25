@@ -5,10 +5,10 @@ import (
 	"hash/fnv"
 	"io"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/bufio"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/bufio"
+	N "github.com/newsingeng/sing/common/network"
 )
 
 type StreamChecksumReader struct {

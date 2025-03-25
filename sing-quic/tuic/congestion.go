@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/sagernet/quic-go"
-	"github.com/sagernet/quic-go/congestion"
-	congestion_meta1 "github.com/sagernet/sing-quic/congestion_meta1"
-	congestion_meta2 "github.com/sagernet/sing-quic/congestion_meta2"
-	"github.com/sagernet/sing/common/ntp"
+	"github.com/newsingeng/quic-go"
+	"github.com/newsingeng/quic-go/congestion"
+	congestion_meta1 "github.com/newsingeng/sing-quic/congestion_meta1"
+	congestion_meta2 "github.com/newsingeng/sing-quic/congestion_meta2"
+	"github.com/newsingeng/sing/common/ntp"
 )
 
 func setCongestion(ctx context.Context, connection quic.Connection, congestionName string) {

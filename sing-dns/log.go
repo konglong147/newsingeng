@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/sagernet/sing/common/logger"
+	"github.com/newsingeng/sing/common/logger"
 
 	"github.com/miekg/dns"
 )

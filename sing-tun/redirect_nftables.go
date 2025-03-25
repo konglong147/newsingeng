@@ -5,11 +5,11 @@ package tun
 import (
 	"net/netip"
 
-	"github.com/sagernet/nftables"
-	"github.com/sagernet/nftables/binaryutil"
-	"github.com/sagernet/nftables/expr"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/control"
+	"github.com/newsingeng/nftables"
+	"github.com/newsingeng/nftables/binaryutil"
+	"github.com/newsingeng/nftables/expr"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/control"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/sys/unix"

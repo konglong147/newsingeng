@@ -7,12 +7,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/cache"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/logger"
-	M "github.com/sagernet/sing/common/metadata"
-	"github.com/sagernet/sing/common/task"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/cache"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/logger"
+	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/newsingeng/sing/common/task"
 
 	"github.com/miekg/dns"
 )

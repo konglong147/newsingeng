@@ -6,9 +6,9 @@ import (
 	"net"
 	"net/netip"
 
-	"github.com/sagernet/sing/common/control"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/logger"
+	"github.com/newsingeng/sing/common/control"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/logger"
 )
 
 type Stack interface {

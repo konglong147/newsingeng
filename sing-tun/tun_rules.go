@@ -8,9 +8,9 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/sagernet/sing/common"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/ranges"
+	"github.com/newsingeng/sing/common"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/ranges"
 
 	"go4.org/netipx"
 )

@@ -3,8 +3,8 @@
 package tun
 
 import (
-	"github.com/sagernet/nftables"
-	"github.com/sagernet/nftables/expr"
+	"github.com/newsingeng/nftables"
+	"github.com/newsingeng/nftables/expr"
 
 	"golang.org/x/exp/slices"
 )

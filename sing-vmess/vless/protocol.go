@@ -5,12 +5,12 @@ import (
 	"encoding/binary"
 	"io"
 
-	"github.com/sagernet/sing-vmess"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/buf"
-	E "github.com/sagernet/sing/common/exceptions"
-	M "github.com/sagernet/sing/common/metadata"
-	"github.com/sagernet/sing/common/rw"
+	"github.com/newsingeng/sing-vmess"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/buf"
+	E "github.com/newsingeng/sing/common/exceptions"
+	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/newsingeng/sing/common/rw"
 )
 
 const (

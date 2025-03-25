@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/x/list"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/x/list"
 )
 
 type Option[K comparable, V any] func(*LruCache[K, V])

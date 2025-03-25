@@ -4,9 +4,9 @@ import (
 	"net"
 	"net/netip"
 
-	"github.com/sagernet/sing/common/buf"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
+	"github.com/newsingeng/sing/common/buf"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
 )
 
 type NATPacketConn interface {

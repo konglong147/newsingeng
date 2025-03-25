@@ -9,16 +9,16 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/auth"
-	"github.com/sagernet/sing/common/buf"
-	"github.com/sagernet/sing/common/bufio"
-	E "github.com/sagernet/sing/common/exceptions"
-	F "github.com/sagernet/sing/common/format"
-	M "github.com/sagernet/sing/common/metadata"
-	N "github.com/sagernet/sing/common/network"
-	"github.com/sagernet/sing/common/pipe"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/atomic"
+	"github.com/newsingeng/sing/common/auth"
+	"github.com/newsingeng/sing/common/buf"
+	"github.com/newsingeng/sing/common/bufio"
+	E "github.com/newsingeng/sing/common/exceptions"
+	F "github.com/newsingeng/sing/common/format"
+	M "github.com/newsingeng/sing/common/metadata"
+	N "github.com/newsingeng/sing/common/network"
+	"github.com/newsingeng/sing/common/pipe"
 )
 
 type Handler = N.TCPConnectionHandler

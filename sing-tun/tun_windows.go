@@ -12,14 +12,14 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/sagernet/sing-tun/internal/winipcfg"
-	"github.com/sagernet/sing-tun/internal/winsys"
-	"github.com/sagernet/sing-tun/internal/wintun"
-	"github.com/sagernet/sing/common"
-	"github.com/sagernet/sing/common/atomic"
-	"github.com/sagernet/sing/common/buf"
-	E "github.com/sagernet/sing/common/exceptions"
-	"github.com/sagernet/sing/common/windnsapi"
+	"github.com/newsingeng/sing-tun/internal/winipcfg"
+	"github.com/newsingeng/sing-tun/internal/winsys"
+	"github.com/newsingeng/sing-tun/internal/wintun"
+	"github.com/newsingeng/sing/common"
+	"github.com/newsingeng/sing/common/atomic"
+	"github.com/newsingeng/sing/common/buf"
+	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/newsingeng/sing/common/windnsapi"
 
 	"golang.org/x/sys/windows"
 )
