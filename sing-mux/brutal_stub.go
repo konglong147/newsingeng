@@ -5,7 +5,7 @@ package mux
 import (
 	"net"
 
-	E "github.com/newsingeng/sing/common/exceptions"
+	E "github.com/sagernet/sing/common/exceptions"
 )
 
 const BrutalAvailable = false

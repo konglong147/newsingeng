@@ -4,9 +4,9 @@ import (
 	"context"
 	"net"
 
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 )
 
 type Client struct {

@@ -6,10 +6,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newsingeng/netlink"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	"github.com/newsingeng/sing/common/x/list"
+	"github.com/sagernet/netlink"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	"github.com/sagernet/sing/common/x/list"
 
 	"golang.org/x/sys/unix"
 )

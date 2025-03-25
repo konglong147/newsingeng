@@ -1,4 +1,4 @@
-module github.com/newsingeng/sing
+module github.com/konglong147/newsingeng/tree/main/sing
 
 go 1.20
 

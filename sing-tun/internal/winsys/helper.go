@@ -6,7 +6,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/newsingeng/sing/common"
+	"github.com/sagernet/sing/common"
 
 	"golang.org/x/sys/windows"
 )

@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"math/bits"
 
-	"github.com/newsingeng/sing/common/varbin"
+	"github.com/sagernet/sing/common/varbin"
 )
 
 // mod from https://github.com/openacid/succinct

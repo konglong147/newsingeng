@@ -5,8 +5,8 @@ import (
 	"net/netip"
 	"syscall"
 
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
 
 	"golang.org/x/sys/unix"
 )

@@ -4,10 +4,10 @@ import (
 	"context"
 	"testing"
 
-	"github.com/newsingeng/sing-dns"
-	_ "github.com/newsingeng/sing-dns/quic"
-	"github.com/newsingeng/sing/common/logger"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing-dns"
+	_ "github.com/sagernet/sing-dns/quic"
+	"github.com/sagernet/sing/common/logger"
+	N "github.com/sagernet/sing/common/network"
 
 	"github.com/stretchr/testify/require"
 )

@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/newsingeng/sing/common"
+	"github.com/sagernet/sing/common"
 )
 
 func ContextWithRegistry(ctx context.Context, registry Registry) context.Context {

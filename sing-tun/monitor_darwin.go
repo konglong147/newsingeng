@@ -7,10 +7,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	"github.com/newsingeng/sing/common/x/list"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	"github.com/sagernet/sing/common/x/list"
 
 	"golang.org/x/net/route"
 	"golang.org/x/sys/unix"

@@ -3,9 +3,9 @@ package rw
 import (
 	"io"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/binary"
-	"github.com/newsingeng/sing/common/varbin"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/binary"
+	"github.com/sagernet/sing/common/varbin"
 )
 
 // Deprecated: create a *bufio.Reader instead.

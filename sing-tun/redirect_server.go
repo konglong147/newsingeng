@@ -9,11 +9,11 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/newsingeng/sing/common/atomic"
-	"github.com/newsingeng/sing/common/control"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/sagernet/sing/common/atomic"
+	"github.com/sagernet/sing/common/control"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	M "github.com/sagernet/sing/common/metadata"
 )
 
 const ProtocolRedirect = "redirect"

@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"strings"
 
-	E "github.com/newsingeng/sing/common/exceptions"
-	F "github.com/newsingeng/sing/common/format"
-	"github.com/newsingeng/sing/common/logger"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/ranges"
+	E "github.com/sagernet/sing/common/exceptions"
+	F "github.com/sagernet/sing/common/format"
+	"github.com/sagernet/sing/common/logger"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/ranges"
 )
 
 type Handler interface {

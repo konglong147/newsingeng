@@ -6,10 +6,10 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/newsingeng/quic-go"
-	"github.com/newsingeng/quic-go/http3"
-	M "github.com/newsingeng/sing/common/metadata"
-	aTLS "github.com/newsingeng/sing/common/tls"
+	"github.com/sagernet/quic-go"
+	"github.com/sagernet/quic-go/http3"
+	M "github.com/sagernet/sing/common/metadata"
+	aTLS "github.com/sagernet/sing/common/tls"
 )
 
 type Config interface {

@@ -8,9 +8,9 @@ import (
 	"unsafe"
 	_ "unsafe"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/control"
-	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/control"
+	E "github.com/sagernet/sing/common/exceptions"
 
 	"golang.org/x/sys/unix"
 )

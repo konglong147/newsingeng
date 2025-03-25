@@ -8,7 +8,7 @@ import (
 	mRand "math/rand"
 	"sync"
 
-	"github.com/newsingeng/sing/common"
+	"github.com/sagernet/sing/common"
 )
 
 var initSeedOnce sync.Once

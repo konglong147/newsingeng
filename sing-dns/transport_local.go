@@ -7,9 +7,9 @@ import (
 	"os"
 	"sort"
 
-	"github.com/newsingeng/sing/common"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing/common"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 
 	"github.com/miekg/dns"
 )

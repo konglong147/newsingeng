@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"os"
 
-	E "github.com/newsingeng/sing/common/exceptions"
+	E "github.com/sagernet/sing/common/exceptions"
 
 	"github.com/miekg/dns"
 )

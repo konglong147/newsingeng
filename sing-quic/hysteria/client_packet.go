@@ -1,6 +1,6 @@
 package hysteria
 
-import E "github.com/newsingeng/sing/common/exceptions"
+import E "github.com/sagernet/sing/common/exceptions"
 
 func (c *Client) loopMessages(conn *clientQUICConnection) {
 	for {

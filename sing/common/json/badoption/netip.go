@@ -3,7 +3,7 @@ package badoption
 import (
 	"net/netip"
 
-	"github.com/newsingeng/sing/common/json"
+	"github.com/sagernet/sing/common/json"
 )
 
 type Addr netip.Addr

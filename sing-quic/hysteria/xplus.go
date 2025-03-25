@@ -7,11 +7,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	"github.com/newsingeng/sing/common/bufio"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	"github.com/sagernet/sing/common/bufio"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 )
 
 const xplusSaltLen = 16

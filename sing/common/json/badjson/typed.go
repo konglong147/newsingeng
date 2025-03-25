@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"strings"
 
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/json"
-	"github.com/newsingeng/sing/common/x/linkedhashmap"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/json"
+	"github.com/sagernet/sing/common/x/linkedhashmap"
 )
 
 type TypedMap[K comparable, V any] struct {

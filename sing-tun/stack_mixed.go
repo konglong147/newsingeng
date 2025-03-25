@@ -5,18 +5,18 @@ package tun
 import (
 	"time"
 
-	"github.com/newsingeng/gvisor/pkg/buffer"
-	"github.com/newsingeng/gvisor/pkg/tcpip/adapters/gonet"
-	"github.com/newsingeng/gvisor/pkg/tcpip/header"
-	"github.com/newsingeng/gvisor/pkg/tcpip/link/channel"
-	"github.com/newsingeng/gvisor/pkg/tcpip/stack"
-	"github.com/newsingeng/gvisor/pkg/tcpip/transport/udp"
-	"github.com/newsingeng/gvisor/pkg/waiter"
-	"github.com/newsingeng/sing-tun/internal/clashtcpip"
-	"github.com/newsingeng/sing/common/bufio"
-	"github.com/newsingeng/sing/common/canceler"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/sagernet/gvisor/pkg/buffer"
+	"github.com/sagernet/gvisor/pkg/tcpip/adapters/gonet"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/link/channel"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/tcpip/transport/udp"
+	"github.com/sagernet/gvisor/pkg/waiter"
+	"github.com/sagernet/sing-tun/internal/clashtcpip"
+	"github.com/sagernet/sing/common/bufio"
+	"github.com/sagernet/sing/common/canceler"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
 )
 
 type Mixed struct {

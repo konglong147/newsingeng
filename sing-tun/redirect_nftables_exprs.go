@@ -5,8 +5,8 @@ package tun
 import (
 	"net/netip"
 
-	"github.com/newsingeng/nftables"
-	"github.com/newsingeng/nftables/expr"
+	"github.com/sagernet/nftables"
+	"github.com/sagernet/nftables/expr"
 
 	"go4.org/netipx"
 )

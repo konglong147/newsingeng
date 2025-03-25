@@ -7,7 +7,7 @@ import (
 	"sort"
 	"unsafe"
 
-	"github.com/newsingeng/sing/common/x/constraints"
+	"github.com/sagernet/sing/common/x/constraints"
 )
 
 func Any[T any](array []T, block func(it T) bool) bool {

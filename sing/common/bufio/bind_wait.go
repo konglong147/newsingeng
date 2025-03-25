@@ -1,9 +1,9 @@
 package bufio
 
 import (
-	"github.com/newsingeng/sing/common/buf"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing/common/buf"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 )
 
 var _ N.ReadWaiter = (*bindPacketReadWaiter)(nil)

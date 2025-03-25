@@ -5,13 +5,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/newsingeng/sing/common"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/service"
-	"github.com/newsingeng/sing/service/pause"
+	"github.com/sagernet/sing/common"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/service"
+	"github.com/sagernet/sing/service/pause"
 )
 
 const TimeLayout = "2006-01-02 15:04:05 -0700"

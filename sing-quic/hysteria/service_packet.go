@@ -1,8 +1,8 @@
 package hysteria
 
 import (
-	"github.com/newsingeng/sing/common"
-	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/sagernet/sing/common"
+	E "github.com/sagernet/sing/common/exceptions"
 )
 
 func (s *serverSession[U]) loopMessages() {

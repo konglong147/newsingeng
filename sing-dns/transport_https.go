@@ -10,9 +10,9 @@ import (
 	"net/netip"
 	"os"
 
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
 
 	"github.com/miekg/dns"
 )

@@ -6,18 +6,18 @@ import (
 	"net/netip"
 	_ "unsafe"
 
-	"github.com/newsingeng/nftables"
-	"github.com/newsingeng/nftables/binaryutil"
-	"github.com/newsingeng/nftables/expr"
-	"github.com/newsingeng/nftables/userdata"
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/ranges"
+	"github.com/sagernet/nftables"
+	"github.com/sagernet/nftables/binaryutil"
+	"github.com/sagernet/nftables/expr"
+	"github.com/sagernet/nftables/userdata"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/ranges"
 
 	"golang.org/x/exp/slices"
 	"golang.org/x/sys/unix"
 )
 
-//go:linkname allocSetID github.com/newsingeng/nftables.allocSetID
+//go:linkname allocSetID github.com/sagernet/nftables.allocSetID
 var allocSetID uint32
 
 func init() {

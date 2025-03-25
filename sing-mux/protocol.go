@@ -6,12 +6,12 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/rw"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/rw"
 )
 
 const (

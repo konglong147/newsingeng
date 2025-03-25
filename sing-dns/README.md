@@ -5,7 +5,7 @@ DNS client with caching
 ## License
 
 ```
-Copyright (C) 2022 by nekohasekai <contact-newsingeng@sekai.icu>
+Copyright (C) 2022 by nekohasekai <contact-sagernet@sekai.icu>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

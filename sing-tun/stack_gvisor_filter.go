@@ -5,11 +5,11 @@ package tun
 import (
 	"net/netip"
 
-	"github.com/newsingeng/gvisor/pkg/tcpip"
-	"github.com/newsingeng/gvisor/pkg/tcpip/header"
-	"github.com/newsingeng/gvisor/pkg/tcpip/stack"
-	"github.com/newsingeng/sing/common/bufio"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/sing/common/bufio"
+	N "github.com/sagernet/sing/common/network"
 )
 
 var _ stack.LinkEndpoint = (*LinkEndpointFilter)(nil)

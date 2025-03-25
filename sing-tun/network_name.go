@@ -3,9 +3,9 @@ package tun
 import (
 	"strconv"
 
-	"github.com/newsingeng/sing-tun/internal/clashtcpip"
-	F "github.com/newsingeng/sing/common/format"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing-tun/internal/clashtcpip"
+	F "github.com/sagernet/sing/common/format"
+	N "github.com/sagernet/sing/common/network"
 )
 
 func NetworkName(network uint8) string {

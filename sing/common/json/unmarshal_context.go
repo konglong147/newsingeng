@@ -3,7 +3,7 @@
 package json
 
 import (
-	json "github.com/newsingeng/sing/common/json/internal/contextjson"
+	json "github.com/sagernet/sing/common/json/internal/contextjson"
 )
 
 var UnmarshalDisallowUnknownFields = json.UnmarshalDisallowUnknownFields

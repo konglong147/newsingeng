@@ -1,7 +1,7 @@
 package dns
 
 import (
-	"github.com/newsingeng/sing/common/buf"
+	"github.com/sagernet/sing/common/buf"
 
 	"github.com/miekg/dns"
 )

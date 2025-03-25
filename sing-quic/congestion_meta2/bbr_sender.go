@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/newsingeng/quic-go/congestion"
+	"github.com/sagernet/quic-go/congestion"
 )
 
 // BbrSender implements BBR congestion control algorithm.  BBR aims to estimate

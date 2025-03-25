@@ -4,7 +4,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/newsingeng/quic-go/congestion"
+	"github.com/sagernet/quic-go/congestion"
 )
 
 // This cubic implementation is based on the one found in Chromiums's QUIC

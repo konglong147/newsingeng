@@ -1,7 +1,7 @@
 package congestion
 
 import (
-	"github.com/newsingeng/quic-go/congestion"
+	"github.com/sagernet/quic-go/congestion"
 )
 
 // packetNumberIndexedQueue is a queue of mostly continuous numbered entries

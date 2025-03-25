@@ -11,15 +11,15 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/newsingeng/netlink"
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	"github.com/newsingeng/sing/common/bufio"
-	E "github.com/newsingeng/sing/common/exceptions"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/rw"
-	"github.com/newsingeng/sing/common/shell"
-	"github.com/newsingeng/sing/common/x/list"
+	"github.com/sagernet/netlink"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	"github.com/sagernet/sing/common/bufio"
+	E "github.com/sagernet/sing/common/exceptions"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/rw"
+	"github.com/sagernet/sing/common/shell"
+	"github.com/sagernet/sing/common/x/list"
 
 	"golang.org/x/sys/unix"
 )
@@ -136,7 +136,7 @@ func (t *NativeTun) BatchSize() int {
 	if !t.gsoEnabled {
 		return 1
 	}
-	/* // Not works on some devices: https://github.com/newsingeng/sing-box/issues/1605
+	/* // Not works on some devices: https://github.com/sagernet/sing-box/issues/1605
 	batchSize := int(gsoMaxSize/t.options.MTU) * 2
 	if batchSize > idealBatchSize {
 		batchSize = idealBatchSize

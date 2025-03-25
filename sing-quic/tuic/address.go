@@ -1,6 +1,6 @@
 package tuic
 
-import M "github.com/newsingeng/sing/common/metadata"
+import M "github.com/sagernet/sing/common/metadata"
 
 var AddressSerializer = M.NewSerializer(
 	M.AddressFamilyByte(0x00, M.AddressFamilyFqdn),

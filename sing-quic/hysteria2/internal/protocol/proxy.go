@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/newsingeng/quic-go/quicvarint"
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/sagernet/quic-go/quicvarint"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
 )
 
 const (

@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/baderror"
-	M "github.com/newsingeng/sing/common/metadata"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/baderror"
+	M "github.com/sagernet/sing/common/metadata"
 )
 
 type httpConn struct {

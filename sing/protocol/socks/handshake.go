@@ -8,15 +8,15 @@ import (
 	"net/netip"
 	"os"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/auth"
-	"github.com/newsingeng/sing/common/bufio"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/varbin"
-	"github.com/newsingeng/sing/protocol/socks/socks4"
-	"github.com/newsingeng/sing/protocol/socks/socks5"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/auth"
+	"github.com/sagernet/sing/common/bufio"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/varbin"
+	"github.com/sagernet/sing/protocol/socks/socks4"
+	"github.com/sagernet/sing/protocol/socks/socks5"
 )
 
 type Handler interface {

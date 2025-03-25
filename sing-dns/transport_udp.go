@@ -8,13 +8,13 @@ import (
 	"os"
 	"sync"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/task"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/task"
 
 	"github.com/miekg/dns"
 )

@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newsingeng/sing/common/control"
-	"github.com/newsingeng/sing/common/logger"
-	"github.com/newsingeng/sing/common/x/list"
+	"github.com/sagernet/sing/common/control"
+	"github.com/sagernet/sing/common/logger"
+	"github.com/sagernet/sing/common/x/list"
 )
 
 func (m *networkUpdateMonitor) RegisterCallback(callback NetworkUpdateCallback) *list.Element[NetworkUpdateCallback] {

@@ -1,8 +1,8 @@
 package tun
 
 import (
-	"github.com/newsingeng/netlink"
-	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/sagernet/netlink"
+	E "github.com/sagernet/sing/common/exceptions"
 )
 
 func (m *defaultInterfaceMonitor) checkUpdate() error {

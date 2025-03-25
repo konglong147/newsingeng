@@ -5,9 +5,9 @@ import (
 	"net/netip"
 	"net/url"
 
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	N "github.com/newsingeng/sing/common/network"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	N "github.com/sagernet/sing/common/network"
 
 	"github.com/miekg/dns"
 )

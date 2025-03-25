@@ -7,12 +7,12 @@ import (
 	"net"
 	"syscall"
 
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	"github.com/newsingeng/sing/common/task"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	"github.com/sagernet/sing/common/task"
 )
 
 func Copy(destination io.Writer, source io.Reader) (n int64, err error) {

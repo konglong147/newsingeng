@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/newsingeng/reality"
-	"github.com/newsingeng/sing/common"
+	"github.com/sagernet/reality"
+	"github.com/sagernet/sing/common"
 )
 
 func init() {

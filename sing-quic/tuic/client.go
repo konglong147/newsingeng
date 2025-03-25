@@ -8,16 +8,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newsingeng/quic-go"
-	"github.com/newsingeng/sing-quic"
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/baderror"
-	"github.com/newsingeng/sing/common/buf"
-	"github.com/newsingeng/sing/common/bufio"
-	E "github.com/newsingeng/sing/common/exceptions"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
-	aTLS "github.com/newsingeng/sing/common/tls"
+	"github.com/sagernet/quic-go"
+	"github.com/sagernet/sing-quic"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/baderror"
+	"github.com/sagernet/sing/common/buf"
+	"github.com/sagernet/sing/common/bufio"
+	E "github.com/sagernet/sing/common/exceptions"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
+	aTLS "github.com/sagernet/sing/common/tls"
 )
 
 type ClientOptions struct {

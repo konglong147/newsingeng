@@ -1,7 +1,7 @@
 fmt:
 	@gofumpt -l -w .
 	@gofmt -s -w .
-	@gci write --custom-order -s standard -s "prefix(github.com/newsingeng/)" -s "default" .
+	@gci write --custom-order -s standard -s "prefix(github.com/sagernet/)" -s "default" .
 
 fmt_install:
 	go install -v mvdan.cc/gofumpt@latest

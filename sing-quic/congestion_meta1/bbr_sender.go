@@ -8,7 +8,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/newsingeng/quic-go/congestion"
+	"github.com/sagernet/quic-go/congestion"
 )
 
 const (

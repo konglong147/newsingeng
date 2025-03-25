@@ -1,11 +1,11 @@
-module github.com/newsingeng/sing-dns
+module github.com/konglong147/newsingeng/tree/main/sing-dns
 
 go 1.20
 
 require (
 	github.com/miekg/dns v1.1.62
-	github.com/newsingeng/quic-go v0.47.0-beta.2
-	github.com/newsingeng/sing v0.5.0-rc.2
+	github.com/sagernet/quic-go v0.47.0-beta.2
+	github.com/sagernet/sing v0.5.0-rc.2
 	github.com/stretchr/testify v1.9.0
 )
 

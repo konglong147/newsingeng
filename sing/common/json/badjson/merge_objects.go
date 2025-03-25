@@ -1,8 +1,8 @@
 package badjson
 
 import (
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/json"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/json"
 )
 
 func MarshallObjects(objects ...any) ([]byte, error) {

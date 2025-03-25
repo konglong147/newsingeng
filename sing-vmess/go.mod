@@ -1,12 +1,12 @@
-module github.com/newsingeng/sing-vmess
+module github.com/konglong147/newsingeng/tree/main/sing-vmess
 
 go 1.18
 
 require (
 	github.com/gofrs/uuid/v5 v5.2.0
-	github.com/newsingeng/reality v0.0.0-20230406110435-ee17307e7691
-	github.com/newsingeng/sing v0.4.1
-	github.com/newsingeng/utls v1.5.4
+	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691
+	github.com/sagernet/sing v0.4.1
+	github.com/sagernet/utls v1.5.4
 	golang.org/x/crypto v0.23.0
 )
 

@@ -6,14 +6,14 @@ import (
 	"net"
 	"sync"
 
-	"github.com/newsingeng/sing-vmess"
-	"github.com/newsingeng/sing/common"
-	"github.com/newsingeng/sing/common/buf"
-	"github.com/newsingeng/sing/common/bufio"
-	E "github.com/newsingeng/sing/common/exceptions"
-	"github.com/newsingeng/sing/common/logger"
-	M "github.com/newsingeng/sing/common/metadata"
-	N "github.com/newsingeng/sing/common/network"
+	"github.com/sagernet/sing-vmess"
+	"github.com/sagernet/sing/common"
+	"github.com/sagernet/sing/common/buf"
+	"github.com/sagernet/sing/common/bufio"
+	E "github.com/sagernet/sing/common/exceptions"
+	"github.com/sagernet/sing/common/logger"
+	M "github.com/sagernet/sing/common/metadata"
+	N "github.com/sagernet/sing/common/network"
 
 	"github.com/gofrs/uuid/v5"
 )

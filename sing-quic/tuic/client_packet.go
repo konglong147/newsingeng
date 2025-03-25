@@ -3,10 +3,10 @@ package tuic
 import (
 	"io"
 
-	"github.com/newsingeng/quic-go"
-	"github.com/newsingeng/sing/common/buf"
-	"github.com/newsingeng/sing/common/bufio"
-	E "github.com/newsingeng/sing/common/exceptions"
+	"github.com/sagernet/quic-go"
+	"github.com/sagernet/sing/common/buf"
+	"github.com/sagernet/sing/common/bufio"
+	E "github.com/sagernet/sing/common/exceptions"
 )
 
 func (c *Client) loopMessages(conn *clientQUICConnection) {
