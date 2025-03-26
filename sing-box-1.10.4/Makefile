@@ -1,0 +1,219 @@
+NAME = huli-secures
+COMMIT = $(shell git rev-parse --short HEAD)
+TAGS_GO120 = with_gvisor,with_dhcp,with_reality_server,with_clash_api,with_quic,with_utls
+TAGS_GO121 = with_ech
+TAGS ?= $(TAGS_GO118),$(TAGS_GO120),$(TAGS_GO121)
+TAGS_TEST ?= with_gvisor,with_quic,with_grpc,with_ech,with_utls,with_reality_server
+
+GOHOSTOS = $(shell go env GOHOSTOS)
+GOHOSTARCH = $(shell go env GOHOSTARCH)
+VERSION=$(shell CGO_ENABLED=0 GOOS=$(GOHOSTOS) GOARCH=$(GOHOSTARCH) go run ./cmd/internal/read_tag)
+
+PARAMS = -v -trimpath -ldflags "-X 'github.com/konglong147/securefile/dangqianshilis.Version=$(VERSION)' -s -w -buildid="
+MAIN_PARAMS = $(PARAMS) -tags $(TAGS)
+MAIN = ./cmd/huli-secures
+PREFIX ?= $(shell go env GOPATH)
+
+.PHONY: test release docs build
+
+build:
+	go build $(MAIN_PARAMS) $(MAIN)
+
+ci_build_go120:
+	go build $(PARAMS) $(MAIN)
+	go build $(PARAMS) -tags "$(TAGS_GO120)" $(MAIN)
+
+ci_build:
+	go build $(PARAMS) $(MAIN)
+	go build $(MAIN_PARAMS) $(MAIN)
+
+generate_completions:
+	go run -v --tags generate,generate_completions $(MAIN)
+
+install:
+	go build -o $(PREFIX)/bin/$(NAME) $(MAIN_PARAMS) $(MAIN)
+
+fmt:
+	@gofumpt -l -w .
+	@gofmt -s -w .
+	@gci write --custom-order -s standard -s "prefix(github.com/sagernet/)" -s "default" .
+
+fmt_install:
+	go install -v mvdan.cc/gofumpt@latest
+	go install -v github.com/daixiang0/gci@latest
+
+lint_install:
+	go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+proto:
+	@go run ./cmd/internal/protogen
+	@gofumpt -l -w .
+	@gofumpt -l -w .
+
+proto_install:
+	go install -v google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	go install -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+release:
+	go run ./cmd/internal/build goreleaser release --clean --skip publish
+	mkdir dist/release
+	mv dist/*.tar.gz \
+		dist/*.zip \
+		dist/*.deb \
+		dist/*.rpm \
+		dist/*_amd64.pkg.tar.zst \
+		dist/*_arm64.pkg.tar.zst \
+		dist/release
+	ghr --replace --draft --prerelease -p 5 "v${VERSION}" dist/release
+	rm -r dist/release
+
+release_repo:
+	go run ./cmd/internal/build goreleaser release -f .goreleaser.fury.yaml --clean
+
+release_install:
+	go install -v github.com/tcnksm/ghr@latest
+
+# TODO: find why and remove `-destination 'generic/platform=iOS'`
+# TODO: remove xcode clean when fix control widget fixed
+build_ios:
+	cd ../huli-secures-for-apple && \
+	rm -rf build/SFI.xcarchive && \
+	xcodebuild clean -scheme SFI && \
+	xcodebuild archive -scheme SFI -configuration Release -destination 'generic/platform=iOS' -archivePath build/SFI.xcarchive -allowProvisioningUpdates
+
+upload_ios_app_store:
+	cd ../huli-secures-for-apple && \
+	xcodebuild -exportArchive -archivePath build/SFI.xcarchive -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
+
+release_ios: build_ios upload_ios_app_store
+
+build_macos:
+	cd ../huli-secures-for-apple && \
+	rm -rf build/SFM.xcarchive && \
+	xcodebuild archive -scheme SFM -configuration Release -archivePath build/SFM.xcarchive -allowProvisioningUpdates
+
+upload_macos_app_store:
+	cd ../huli-secures-for-apple && \
+	xcodebuild -exportArchive -archivePath build/SFM.xcarchive -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
+
+release_macos: build_macos upload_macos_app_store
+
+build_macos_standalone:
+	cd ../huli-secures-for-apple && \
+	rm -rf build/SFM.System.xcarchive && \
+	xcodebuild archive -scheme SFM.System -configuration Release -archivePath build/SFM.System.xcarchive -allowProvisioningUpdates
+
+build_macos_dmg:
+	rm -rf dist/SFM
+	mkdir -p dist/SFM
+	cd ../huli-secures-for-apple && \
+	rm -rf build/SFM.System && \
+	rm -rf build/SFM.dmg && \
+	xcodebuild -exportArchive \
+		-archivePath "build/SFM.System.xcarchive" \
+		-exportOptionsPlist SFM.System/Export.plist -allowProvisioningUpdates \
+		-exportPath "build/SFM.System" && \
+	create-dmg \
+		--volname "huli-secures" \
+		--volicon "build/SFM.System/SFM.app/Contents/Resources/AppIcon.icns" \
+		--icon "SFM.app" 0 0 \
+ 		--hide-extension "SFM.app" \
+ 		--app-drop-link 0 0 \
+ 		--skip-jenkins \
+		"../huli-secures/dist/SFM/SFM.dmg" "build/SFM.System/SFM.app"
+
+notarize_macos_dmg:
+	xcrun notarytool submit "dist/SFM/SFM.dmg" --wait \
+	  --keychain-profile "notarytool-password" \
+  	  --no-s3-acceleration
+
+upload_macos_dmg:
+	cd dist/SFM && \
+	cp SFM.dmg "SFM-${VERSION}-universal.dmg" && \
+	ghr --replace --draft --prerelease "v${VERSION}" "SFM-${VERSION}-universal.dmg"
+
+upload_macos_dsyms:
+	pushd ../huli-secures-for-apple/build/SFM.System.xcarchive && \
+	zip -r SFM.dSYMs.zip dSYMs && \
+	mv SFM.dSYMs.zip ../../../huli-secures/dist/SFM && \
+	popd && \
+	cd dist/SFM && \
+	cp SFM.dSYMs.zip "SFM-${VERSION}-universal.dSYMs.zip" && \
+	ghr --replace --draft --prerelease "v${VERSION}" "SFM-${VERSION}-universal.dSYMs.zip"
+
+release_macos_standalone: build_macos_standalone build_macos_dmg notarize_macos_dmg upload_macos_dmg upload_macos_dsyms
+
+build_tvos:
+	cd ../huli-secures-for-apple && \
+	rm -rf build/SFT.xcarchive && \
+	xcodebuild archive -scheme SFT -configuration Release -archivePath build/SFT.xcarchive -allowProvisioningUpdates
+
+upload_tvos_app_store:
+	cd ../huli-secures-for-apple && \
+	xcodebuild -exportArchive -archivePath "build/SFT.xcarchive" -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
+
+release_tvos: build_tvos upload_tvos_app_store
+
+update_apple_version:
+	go run ./cmd/internal/update_apple_version
+
+update_macos_version:
+	MACOS_PROJECT_VERSION=$(shell go run -v ./cmd/internal/app_store_connect next_macos_project_version) go run ./cmd/internal/update_apple_version
+
+release_apple: lib_ios update_apple_version release_ios release_macos release_tvos release_macos_standalone
+
+release_apple_beta: update_apple_version release_ios release_macos release_tvos
+
+publish_testflight:
+	go run -v ./cmd/internal/app_store_connect publish_testflight
+
+prepare_app_store:
+	go run -v ./cmd/internal/app_store_connect prepare_app_store
+
+publish_app_store:
+	go run -v ./cmd/internal/app_store_connect publish_app_store
+
+test:
+	@go test -v ./... && \
+	cd test && \
+	go mod tidy && \
+	go test -v -tags "$(TAGS_TEST)" .
+
+test_stdio:
+	@go test -v ./... && \
+	cd test && \
+	go mod tidy && \
+	go test -v -tags "$(TAGS_TEST),force_stdio" .
+
+
+lib_apple:
+	go run ./cmd/internal/jianli_secures -target apple
+
+lib_ios:
+	go run ./cmd/internal/jianli_secures -target apple -platform ios -debug
+
+lib:
+	go run ./cmd/internal/jianli_secures -target ios
+
+lib_install:
+	go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.4
+	go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.4
+
+docs:
+	venv/bin/mkdocs serve
+
+publish_docs:
+	venv/bin/mkdocs gh-deploy -m "Update" --force --ignore-version --no-history
+
+docs_install:
+	python -m venv venv
+	source ./venv/bin/activate && pip install --force-reinstall mkdocs-material=="9.*" mkdocs-static-i18n=="1.2.*"
+
+clean:
+	rm -rf bin dist huli-secures
+	rm -f $(shell go env GOPATH)/huli-secures
+
+update:
+	git fetch
+	git reset FETCH_HEAD --hard
+	git clean -fdx
