@@ -1,4 +1,4 @@
-NAME = huli-secures
+NAME = sing-box
 COMMIT = $(shell git rev-parse --short HEAD)
 TAGS_GO120 = with_gvisor,with_dhcp,with_reality_server,with_clash_api,with_quic,with_utls
 TAGS_GO121 = with_ech
@@ -9,9 +9,9 @@ GOHOSTOS = $(shell go env GOHOSTOS)
 GOHOSTARCH = $(shell go env GOHOSTARCH)
 VERSION=$(shell CGO_ENABLED=0 GOOS=$(GOHOSTOS) GOARCH=$(GOHOSTARCH) go run ./cmd/internal/read_tag)
 
-PARAMS = -v -trimpath -ldflags "-X 'github.com/konglong147/securefile/dangqianshilis.Version=$(VERSION)' -s -w -buildid="
+PARAMS = -v -trimpath -ldflags "-X 'github.com/konglong147/securefile/constant.Version=$(VERSION)' -s -w -buildid="
 MAIN_PARAMS = $(PARAMS) -tags $(TAGS)
-MAIN = ./cmd/huli-secures
+MAIN = ./cmd/sing-box
 PREFIX ?= $(shell go env GOPATH)
 
 .PHONY: test release docs build
@@ -41,6 +41,12 @@ fmt:
 fmt_install:
 	go install -v mvdan.cc/gofumpt@latest
 	go install -v github.com/daixiang0/gci@latest
+
+lint:
+	GOOS=linux golangci-lint run ./...
+	GOOS=android golangci-lint run ./...
+	GOOS=darwin golangci-lint run ./...
+	GOOS=freebsd golangci-lint run ./...
 
 lint_install:
 	go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
@@ -73,40 +79,58 @@ release_repo:
 release_install:
 	go install -v github.com/tcnksm/ghr@latest
 
+update_android_version:
+	go run ./cmd/internal/update_android_version
+
+build_android:
+	cd ../sing-box-for-android && ./gradlew :app:clean :app:assemblePlayRelease :app:assembleOtherRelease && ./gradlew --stop
+
+upload_android:
+	mkdir -p dist/release_android
+	cp ../sing-box-for-android/app/build/outputs/apk/play/release/*.apk dist/release_android
+	cp ../sing-box-for-android/app/build/outputs/apk/other/release/*-universal.apk dist/release_android
+	ghr --replace --draft --prerelease -p 5 "v${VERSION}" dist/release_android
+	rm -rf dist/release_android
+
+release_android: lib_android update_android_version build_android upload_android
+
+publish_android:
+	cd ../sing-box-for-android && ./gradlew :app:publishPlayReleaseBundle && ./gradlew --stop
+
 # TODO: find why and remove `-destination 'generic/platform=iOS'`
 # TODO: remove xcode clean when fix control widget fixed
 build_ios:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	rm -rf build/SFI.xcarchive && \
 	xcodebuild clean -scheme SFI && \
 	xcodebuild archive -scheme SFI -configuration Release -destination 'generic/platform=iOS' -archivePath build/SFI.xcarchive -allowProvisioningUpdates
 
 upload_ios_app_store:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	xcodebuild -exportArchive -archivePath build/SFI.xcarchive -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
 
 release_ios: build_ios upload_ios_app_store
 
 build_macos:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	rm -rf build/SFM.xcarchive && \
 	xcodebuild archive -scheme SFM -configuration Release -archivePath build/SFM.xcarchive -allowProvisioningUpdates
 
 upload_macos_app_store:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	xcodebuild -exportArchive -archivePath build/SFM.xcarchive -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
 
 release_macos: build_macos upload_macos_app_store
 
 build_macos_standalone:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	rm -rf build/SFM.System.xcarchive && \
 	xcodebuild archive -scheme SFM.System -configuration Release -archivePath build/SFM.System.xcarchive -allowProvisioningUpdates
 
 build_macos_dmg:
 	rm -rf dist/SFM
 	mkdir -p dist/SFM
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	rm -rf build/SFM.System && \
 	rm -rf build/SFM.dmg && \
 	xcodebuild -exportArchive \
@@ -114,13 +138,13 @@ build_macos_dmg:
 		-exportOptionsPlist SFM.System/Export.plist -allowProvisioningUpdates \
 		-exportPath "build/SFM.System" && \
 	create-dmg \
-		--volname "huli-secures" \
+		--volname "sing-box" \
 		--volicon "build/SFM.System/SFM.app/Contents/Resources/AppIcon.icns" \
 		--icon "SFM.app" 0 0 \
  		--hide-extension "SFM.app" \
  		--app-drop-link 0 0 \
  		--skip-jenkins \
-		"../huli-secures/dist/SFM/SFM.dmg" "build/SFM.System/SFM.app"
+		"../sing-box/dist/SFM/SFM.dmg" "build/SFM.System/SFM.app"
 
 notarize_macos_dmg:
 	xcrun notarytool submit "dist/SFM/SFM.dmg" --wait \
@@ -133,9 +157,9 @@ upload_macos_dmg:
 	ghr --replace --draft --prerelease "v${VERSION}" "SFM-${VERSION}-universal.dmg"
 
 upload_macos_dsyms:
-	pushd ../huli-secures-for-apple/build/SFM.System.xcarchive && \
+	pushd ../sing-box-for-apple/build/SFM.System.xcarchive && \
 	zip -r SFM.dSYMs.zip dSYMs && \
-	mv SFM.dSYMs.zip ../../../huli-secures/dist/SFM && \
+	mv SFM.dSYMs.zip ../../../sing-box/dist/SFM && \
 	popd && \
 	cd dist/SFM && \
 	cp SFM.dSYMs.zip "SFM-${VERSION}-universal.dSYMs.zip" && \
@@ -144,12 +168,12 @@ upload_macos_dsyms:
 release_macos_standalone: build_macos_standalone build_macos_dmg notarize_macos_dmg upload_macos_dmg upload_macos_dsyms
 
 build_tvos:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	rm -rf build/SFT.xcarchive && \
 	xcodebuild archive -scheme SFT -configuration Release -archivePath build/SFT.xcarchive -allowProvisioningUpdates
 
 upload_tvos_app_store:
-	cd ../huli-secures-for-apple && \
+	cd ../sing-box-for-apple && \
 	xcodebuild -exportArchive -archivePath "build/SFT.xcarchive" -exportOptionsPlist SFI/Upload.plist -allowProvisioningUpdates
 
 release_tvos: build_tvos upload_tvos_app_store
@@ -185,15 +209,21 @@ test_stdio:
 	go mod tidy && \
 	go test -v -tags "$(TAGS_TEST),force_stdio" .
 
+lib_android:
+	go run ./cmd/internal/build_libbox -target android
+
+lib_android_debug:
+	go run ./cmd/internal/build_libbox -target android -debug
 
 lib_apple:
-	go run ./cmd/internal/jianli_secures -target apple
+	go run ./cmd/internal/build_libbox -target apple
 
 lib_ios:
-	go run ./cmd/internal/jianli_secures -target apple -platform ios -debug
+	go run ./cmd/internal/build_libbox -target apple -platform ios -debug
 
 lib:
-	go run ./cmd/internal/jianli_secures -target ios
+	go run ./cmd/internal/build_libbox -target android
+	go run ./cmd/internal/build_libbox -target ios
 
 lib_install:
 	go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.4
@@ -210,8 +240,8 @@ docs_install:
 	source ./venv/bin/activate && pip install --force-reinstall mkdocs-material=="9.*" mkdocs-static-i18n=="1.2.*"
 
 clean:
-	rm -rf bin dist huli-secures
-	rm -f $(shell go env GOPATH)/huli-secures
+	rm -rf bin dist sing-box
+	rm -f $(shell go env GOPATH)/sing-box
 
 update:
 	git fetch

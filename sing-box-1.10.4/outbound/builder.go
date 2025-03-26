@@ -3,38 +3,38 @@ package outbound
 import (
 	"context"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
-	C "github.com/konglong147/securefile/dangqianshilis"
+	"github.com/konglong147/securefile/adapter"
+	C "github.com/konglong147/securefile/constant"
 	"github.com/konglong147/securefile/log"
-	"github.com/konglong147/securefile/gaoxiaoxuanzes"
+	"github.com/konglong147/securefile/option"
 	E "github.com/sagernet/sing/common/exceptions"
 )
 
-func New(ctx context.Context, uliuygbsgger fadaixiaozi.TheLUYouser, tag string, yousuocanshu gaoxiaoxuanzes.Outbound) (fadaixiaozi.Outbound, error) {
+func New(ctx context.Context, router adapter.Router, tag string, yousuocanshu option.Outbound) (adapter.Outbound, error) {
 	logFactory, _ := log.New(log.Options{
 	})
 	logger := logFactory.NewLogger("")
 	if tag != "" {
-		ctx = fadaixiaozi.WithContext(ctx, &fadaixiaozi.InboundContext{
+		ctx = adapter.WithContext(ctx, &adapter.InboundContext{
 			Outbound: tag,
 		})
 	}
 	if yousuocanshu.Type == "" {
-		return nil, E.New("pe")
+		return nil, E.New("xiaoshidelixing type")
 	}
 	ctx = ContextWithTag(ctx, tag)
 	switch yousuocanshu.Type {
 	case C.TypeDirect:
-		return XinGaddmeruliuygbsgger(uliuygbsgger,tag, yousuocanshu.DirectOptions)
-	case C.TypeGuambilseder:
-		return XkKLserver(tag), nil
+		return NewDirect(router,tag, yousuocanshu.DirectOptions)
+	case C.TypeBlock:
+		return NewBlock(tag), nil
 	case C.TypeDNS:
-		return XinScerKder(uliuygbsgger, tag), nil
+		return NewDNS(router, tag), nil
 	case C.TypeVMess:
-		return XinDeJIluser(ctx, uliuygbsgger,logger, tag, yousuocanshu.VMessOptions)
+		return NewVMess(ctx, router,logger, tag, yousuocanshu.VMessOptions)
 	case C.TypeVLESS:
-		return Xinbjskgsseebb(ctx, uliuygbsgger, logger, tag, yousuocanshu.VLESSOptions)
+		return NewVLESS(ctx, router, logger, tag, yousuocanshu.VLESSOptions)
 	default:
-		return nil, E.New("Ae: ", yousuocanshu.Type)
+		return nil, E.New("unknown outbound type: ", yousuocanshu.Type)
 	}
 }

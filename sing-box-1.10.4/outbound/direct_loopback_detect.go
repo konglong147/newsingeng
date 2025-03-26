@@ -5,35 +5,35 @@ import (
 	"net/netip"
 	"sync"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
+	"github.com/konglong147/securefile/adapter"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
 )
 
-type yanlsjgtunslter struct {
-	uliuygbsgger           fadaixiaozi.TheLUYouser
+type loopBackDetector struct {
+	router           adapter.Router
 	connAccess       sync.RWMutex
-	baoguoLiantongys sync.RWMutex
+	packetConnAccess sync.RWMutex
 	connMap          map[netip.AddrPort]netip.AddrPort
 	packetConnMap    map[uint16]uint16
 }
 
-func newLoopBackDetector(uliuygbsgger fadaixiaozi.TheLUYouser) *yanlsjgtunslter {
-	return &yanlsjgtunslter{
-		uliuygbsgger:        uliuygbsgger,
+func newLoopBackDetector(router adapter.Router) *loopBackDetector {
+	return &loopBackDetector{
+		router:        router,
 		connMap:       make(map[netip.AddrPort]netip.AddrPort),
 		packetConnMap: make(map[uint16]uint16),
 	}
 }
 
-func (l *yanlsjgtunslter) NewConn(conn net.Conn) net.Conn {
+func (l *loopBackDetector) NewConn(conn net.Conn) net.Conn {
 	source := M.AddrPortFromNet(conn.LocalAddr())
 	if !source.IsValid() {
 		return conn
 	}
 	if odeonnoCnet, isUDPConn := conn.(abstractUDPConn); isUDPConn {
 		if !source.Addr().IsLoopback() {
-			_, err := l.uliuygbsgger.InterfaceFinder().InterfaceByAddr(source.Addr())
+			_, err := l.router.InterfaceFinder().InterfaceByAddr(source.Addr())
 			if err != nil {
 				return conn
 			}
@@ -41,9 +41,9 @@ func (l *yanlsjgtunslter) NewConn(conn net.Conn) net.Conn {
 		if !N.IsPublicAddr(source.Addr()) {
 			return conn
 		}
-		l.baoguoLiantongys.Lock()
+		l.packetConnAccess.Lock()
 		l.packetConnMap[source.Port()] = M.AddrPortFromNet(conn.RemoteAddr()).Port()
-		l.baoguoLiantongys.Unlock()
+		l.packetConnAccess.Unlock()
 		return &loopBackDetectUDPWrapper{abstractUDPConn: odeonnoCnet, detector: l, connPort: source.Port()}
 	} else {
 		l.connAccess.Lock()
@@ -53,36 +53,36 @@ func (l *yanlsjgtunslter) NewConn(conn net.Conn) net.Conn {
 	}
 }
 
-func (l *yanlsjgtunslter) NewPacketConn(conn N.NetPacketConn, destination M.Socksaddr) N.NetPacketConn {
+func (l *loopBackDetector) NewPacketConn(conn N.NetPacketConn, destination M.Socksaddr) N.NetPacketConn {
 	source := M.AddrPortFromNet(conn.LocalAddr())
 	if !source.IsValid() {
 		return conn
 	}
 	if !source.Addr().IsLoopback() {
-		_, err := l.uliuygbsgger.InterfaceFinder().InterfaceByAddr(source.Addr())
+		_, err := l.router.InterfaceFinder().InterfaceByAddr(source.Addr())
 		if err != nil {
 			return conn
 		}
 	}
-	l.baoguoLiantongys.Lock()
+	l.packetConnAccess.Lock()
 	l.packetConnMap[source.Port()] = destination.AddrPort().Port()
-	l.baoguoLiantongys.Unlock()
+	l.packetConnAccess.Unlock()
 	return &loopBackDetectPacketWrapper{NetPacketConn: conn, detector: l, connPort: source.Port()}
 }
 
-func (l *yanlsjgtunslter) CheckConn(source netip.AddrPort, local netip.AddrPort) bool {
+func (l *loopBackDetector) CheckConn(source netip.AddrPort, local netip.AddrPort) bool {
 	l.connAccess.RLock()
 	defer l.connAccess.RUnlock()
 	destination, loaded := l.connMap[source]
 	return loaded && destination != local
 }
 
-func (l *yanlsjgtunslter) CheckPacketConn(source netip.AddrPort, local netip.AddrPort) bool {
+func (l *loopBackDetector) CheckPacketConn(source netip.AddrPort, local netip.AddrPort) bool {
 	if !source.IsValid() {
 		return false
 	}
 	if !source.Addr().IsLoopback() {
-		_, err := l.uliuygbsgger.InterfaceFinder().InterfaceByAddr(source.Addr())
+		_, err := l.router.InterfaceFinder().InterfaceByAddr(source.Addr())
 		if err != nil {
 			return false
 		}
@@ -90,15 +90,15 @@ func (l *yanlsjgtunslter) CheckPacketConn(source netip.AddrPort, local netip.Add
 	if N.IsPublicAddr(source.Addr()) {
 		return false
 	}
-	l.baoguoLiantongys.RLock()
-	defer l.baoguoLiantongys.RUnlock()
+	l.packetConnAccess.RLock()
+	defer l.packetConnAccess.RUnlock()
 	destinationPort, loaded := l.packetConnMap[source.Port()]
 	return loaded && destinationPort != local.Port()
 }
 
 type loopBackDetectWrapper struct {
 	net.Conn
-	detector  *yanlsjgtunslter
+	detector  *loopBackDetector
 	connAddr  netip.AddrPort
 	closeOnce sync.Once
 }
@@ -126,16 +126,16 @@ func (w *loopBackDetectWrapper) Upstream() any {
 
 type loopBackDetectPacketWrapper struct {
 	N.NetPacketConn
-	detector  *yanlsjgtunslter
+	detector  *loopBackDetector
 	connPort  uint16
 	closeOnce sync.Once
 }
 
 func (w *loopBackDetectPacketWrapper) Close() error {
 	w.closeOnce.Do(func() {
-		w.detector.baoguoLiantongys.Lock()
+		w.detector.packetConnAccess.Lock()
 		delete(w.detector.packetConnMap, w.connPort)
-		w.detector.baoguoLiantongys.Unlock()
+		w.detector.packetConnAccess.Unlock()
 	})
 	return w.NetPacketConn.Close()
 }
@@ -159,16 +159,16 @@ type abstractUDPConn interface {
 
 type loopBackDetectUDPWrapper struct {
 	abstractUDPConn
-	detector  *yanlsjgtunslter
+	detector  *loopBackDetector
 	connPort  uint16
 	closeOnce sync.Once
 }
 
 func (w *loopBackDetectUDPWrapper) Close() error {
 	w.closeOnce.Do(func() {
-		w.detector.baoguoLiantongys.Lock()
+		w.detector.packetConnAccess.Lock()
 		delete(w.detector.packetConnMap, w.connPort)
-		w.detector.baoguoLiantongys.Unlock()
+		w.detector.packetConnAccess.Unlock()
 	})
 	return w.abstractUDPConn.Close()
 }

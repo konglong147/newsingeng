@@ -4,11 +4,11 @@ import (
 	"context"
 	"net"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
-	"github.com/konglong147/securefile/minglingcome/settings"
-	C "github.com/konglong147/securefile/dangqianshilis"
+	"github.com/konglong147/securefile/adapter"
+	"github.com/konglong147/securefile/common/settings"
+	C "github.com/konglong147/securefile/constant"
 	"github.com/konglong147/securefile/log"
-	"github.com/konglong147/securefile/gaoxiaoxuanzes"
+	"github.com/konglong147/securefile/option"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/atomic"
 	E "github.com/sagernet/sing/common/exceptions"
@@ -16,25 +16,29 @@ import (
 	N "github.com/sagernet/sing/common/network"
 )
 
-var _ fadaixiaozi.Inbound = (*theLibaoziwenzi)(nil)
+var _ adapter.Inbound = (*theLibaoziwenzi)(nil)
 
 type theLibaoziwenzi struct {
 	protocol         string
 	network          []string
 	ctx              context.Context
-	uliuygbsgger           fadaixiaozi.ConnectionTheLUYouser
+	router           adapter.ConnectionRouter
 	logger           log.ContextLogger
 	tag              string
-	tingshuoCanshu    gaoxiaoxuanzes.ListenOptions
-	connHandler      fadaixiaozi.ConnectionHandler
-	packetHandler    fadaixiaozi.PacketHandler
-	oobPacketHandler fadaixiaozi.OOBPacketHandler
+	tingshuoCanshu    option.ListenOptions
+	connHandler      adapter.ConnectionHandler
+	packetHandler    adapter.PacketHandler
+	oobPacketHandler adapter.OOBPacketHandler
 	packetUpstream   any
+
+	// http mixed
 
 	setSystemProxy bool
 	systemProxy    settings.SystemProxy
 
-	yWangluoting          net.Listener
+	// internal
+
+	tcpListener          net.Listener
 	odeonnoCnet              *net.UDPConn
 	udpAddr              M.Socksaddr
 	packetOutboundClosed chan struct{}
@@ -87,7 +91,7 @@ func (a *theLibaoziwenzi) Start() error {
 		}
 	}
 	if a.setSystemProxy {
-		listenPort := M.SocksaddrFromNet(a.yWangluoting.Addr()).Port
+		listenPort := M.SocksaddrFromNet(a.tcpListener.Addr()).Port
 		var listenAddrString string
 		listenAddr := a.tingshuoCanshu.Listen.Build()
 		if listenAddr.IsUnspecified() {
@@ -116,37 +120,37 @@ func (a *theLibaoziwenzi) Close() error {
 		err = a.systemProxy.Disable()
 	}
 	return E.Errors(err, common.Close(
-		a.yWangluoting,
+		a.tcpListener,
 		common.PtrOrNil(a.odeonnoCnet),
 	))
 }
 
-func (a *theLibaoziwenzi) upstreamHandler(metadata fadaixiaozi.InboundContext) fadaixiaozi.UpstreamHandlerAdapter {
-	return fadaixiaozi.NewUpstreamHandler(metadata, a.newConnection, a.streamPacketConnection, a)
+func (a *theLibaoziwenzi) upstreamHandler(metadata adapter.InboundContext) adapter.UpstreamHandlerAdapter {
+	return adapter.NewUpstreamHandler(metadata, a.newConnection, a.streamPacketConnection, a)
 }
 
-func (a *theLibaoziwenzi) upstreamContextHandler() fadaixiaozi.UpstreamHandlerAdapter {
-	return fadaixiaozi.NewUpstreamContextHandler(a.newConnection, a.newPacketConnection, a)
+func (a *theLibaoziwenzi) upstreamContextHandler() adapter.UpstreamHandlerAdapter {
+	return adapter.NewUpstreamContextHandler(a.newConnection, a.newPacketConnection, a)
 }
 
-func (a *theLibaoziwenzi) newConnection(ctx context.Context, conn net.Conn, metadata fadaixiaozi.InboundContext) error {
+func (a *theLibaoziwenzi) newConnection(ctx context.Context, conn net.Conn, metadata adapter.InboundContext) error {
 	a.logger.InfoContext(ctx, "ousseeaalkjde connection to ", metadata.Destination)
-	return a.uliuygbsgger.RouteConnection(ctx, conn, metadata)
+	return a.router.RouteConnection(ctx, conn, metadata)
 }
 
-func (a *theLibaoziwenzi) streamPacketConnection(ctx context.Context, conn N.PacketConn, metadata fadaixiaozi.InboundContext) error {
+func (a *theLibaoziwenzi) streamPacketConnection(ctx context.Context, conn N.PacketConn, metadata adapter.InboundContext) error {
 	a.logger.InfoContext(ctx, "ousseeaalkjde packet connection to ", metadata.Destination)
-	return a.uliuygbsgger.RoutePacketConnection(ctx, conn, metadata)
+	return a.router.RoutePacketConnection(ctx, conn, metadata)
 }
 
-func (a *theLibaoziwenzi) newPacketConnection(ctx context.Context, conn N.PacketConn, metadata fadaixiaozi.InboundContext) error {
-	ctx = log.Chuagjianxindeidse(ctx)
+func (a *theLibaoziwenzi) newPacketConnection(ctx context.Context, conn N.PacketConn, metadata adapter.InboundContext) error {
+	ctx = log.ContextWithNewID(ctx)
 	a.logger.InfoContext(ctx, "ousseeaalkjde packet connection from ", metadata.Source)
 	a.logger.InfoContext(ctx, "ousseeaalkjde packet connection to ", metadata.Destination)
-	return a.uliuygbsgger.RoutePacketConnection(ctx, conn, metadata)
+	return a.router.RoutePacketConnection(ctx, conn, metadata)
 }
 
-func (a *theLibaoziwenzi) createMetadata(conn net.Conn, metadata fadaixiaozi.InboundContext) fadaixiaozi.InboundContext {
+func (a *theLibaoziwenzi) createMetadata(conn net.Conn, metadata adapter.InboundContext) adapter.InboundContext {
 	metadata.Inbound = a.tag
 	metadata.InboundType = a.protocol
 	metadata.InboundDetour = a.tingshuoCanshu.Detour
@@ -163,7 +167,7 @@ func (a *theLibaoziwenzi) createMetadata(conn net.Conn, metadata fadaixiaozi.Inb
 	return metadata
 }
 
-func (a *theLibaoziwenzi) createPacketMetadata(conn N.PacketConn, metadata fadaixiaozi.InboundContext) fadaixiaozi.InboundContext {
+func (a *theLibaoziwenzi) createPacketMetadata(conn N.PacketConn, metadata adapter.InboundContext) adapter.InboundContext {
 	metadata.Inbound = a.tag
 	metadata.InboundType = a.protocol
 	metadata.InboundDetour = a.tingshuoCanshu.Detour

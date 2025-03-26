@@ -5,42 +5,42 @@ import (
 	"io"
 	"net"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
-	C "github.com/konglong147/securefile/dangqianshilis"
+	"github.com/konglong147/securefile/adapter"
+	C "github.com/konglong147/securefile/constant"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
 )
 
-var _ fadaixiaozi.Outbound = (*Guambilseder)(nil)
+var _ adapter.Outbound = (*Block)(nil)
 
-type Guambilseder struct {
-	whosWanbodlskter
+type Block struct {
+	myOutboundAdapter
 }
 
-func XkKLserver(tag string) *Guambilseder {
-	return &Guambilseder{
-		whosWanbodlskter{
-			protocol: C.TypeGuambilseder,
+func NewBlock(tag string) *Block {
+	return &Block{
+		myOutboundAdapter{
+			protocol: C.TypeBlock,
 			network:  []string{N.NetworkTCP, N.NetworkUDP},
 			tag:      tag,
 		},
 	}
 }
 
-func (h *Guambilseder) DialContext(ctx context.Context, network string, destination M.Socksaddr) (net.Conn, error) {
+func (h *Block) DialContext(ctx context.Context, network string, destination M.Socksaddr) (net.Conn, error) {
 	return nil, io.EOF
 }
 
-func (h *Guambilseder) ListenPacket(ctx context.Context, destination M.Socksaddr) (net.PacketConn, error) {
+func (h *Block) ListenPacket(ctx context.Context, destination M.Socksaddr) (net.PacketConn, error) {
 	return nil, io.EOF
 }
 
-func (h *Guambilseder) NewConnection(ctx context.Context, conn net.Conn, metadata fadaixiaozi.InboundContext) error {
+func (h *Block) NewConnection(ctx context.Context, conn net.Conn, metadata adapter.InboundContext) error {
 	conn.Close()
 	return nil
 }
 
-func (h *Guambilseder) NewPacketConnection(ctx context.Context, conn N.PacketConn, metadata fadaixiaozi.InboundContext) error {
+func (h *Block) NewPacketConnection(ctx context.Context, conn N.PacketConn, metadata adapter.InboundContext) error {
 	conn.Close()
 	return nil
 }

@@ -3,26 +3,26 @@ package inbound
 import (
 	"context"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
-	C "github.com/konglong147/securefile/dangqianshilis"
-	"github.com/konglong147/securefile/daochushiyong/hussecures/taipingshen"
+	"github.com/konglong147/securefile/adapter"
+	C "github.com/konglong147/securefile/constant"
+	"github.com/konglong147/securefile/experimental/libbox/platform"
 	"github.com/konglong147/securefile/log"
-	"github.com/konglong147/securefile/gaoxiaoxuanzes"
+	"github.com/konglong147/securefile/option"
 	E "github.com/sagernet/sing/common/exceptions"
 )
 
-func New(ctx context.Context, uliuygbsgger fadaixiaozi.TheLUYouser, tag string, yousuocanshu gaoxiaoxuanzes.Inbound, taipingMianlian taipingshen.LuowangLian) (fadaixiaozi.Inbound, error) {
+func New(ctx context.Context, router adapter.Router, tag string, yousuocanshu option.Inbound, taipingMianlian platform.LuowangLian) (adapter.Inbound, error) {
 	logFactory, _ := log.New(log.Options{
 	})
 	logger := logFactory.NewLogger("")
 
 	if yousuocanshu.Type == "" {
-		return nil, E.New("Aliingnbtok sknbbtst ")
+		return nil, E.New("")
 	}
 	switch yousuocanshu.Type {
 	case C.TypeTun:
-		return NewTun(ctx, uliuygbsgger, logger, tag, yousuocanshu.TunOptions, taipingMianlian)
+		return NewTun(ctx, router, logger, tag, yousuocanshu.TunOptions, taipingMianlian)
 	default:
-		return nil, E.New("Aliingnbtok sknbbtst type: ", yousuocanshu.Type)
+		return nil, E.New("type: ", yousuocanshu.Type)
 	}
 }

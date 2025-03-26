@@ -7,10 +7,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/konglong147/securefile/fadaixiaozi"
-	C "github.com/konglong147/securefile/dangqianshilis"
+	"github.com/konglong147/securefile/adapter"
+	C "github.com/konglong147/securefile/constant"
 	"github.com/konglong147/securefile/log"
-	"github.com/konglong147/securefile/gaoxiaoxuanzes"
+	"github.com/konglong147/securefile/option"
 	"github.com/sagernet/sing-dns"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/buf"
@@ -21,44 +21,44 @@ import (
 	N "github.com/sagernet/sing/common/network"
 )
 
-type whosWanbodlskter struct {
+type myOutboundAdapter struct {
 	protocol     string
 	network      []string
-	uliuygbsgger       fadaixiaozi.TheLUYouser
+	router       adapter.Router
 	logger       log.ContextLogger
 	tag          string
 	dependencies []string
 }
 
-func (a *whosWanbodlskter) Type() string {
+func (a *myOutboundAdapter) Type() string {
 	return a.protocol
 }
 
-func (a *whosWanbodlskter) Tag() string {
+func (a *myOutboundAdapter) Tag() string {
 	return a.tag
 }
 
-func (a *whosWanbodlskter) Network() []string {
+func (a *myOutboundAdapter) Network() []string {
 	return a.network
 }
 
-func (a *whosWanbodlskter) Dependencies() []string {
+func (a *myOutboundAdapter) Dependencies() []string {
 	return a.dependencies
 }
 
-func (a *whosWanbodlskter) NewError(ctx context.Context, err error) {
+func (a *myOutboundAdapter) NewError(ctx context.Context, err error) {
 	NewError(a.logger, ctx, err)
 }
 
-func withDialerDependency(yousuocanshu gaoxiaoxuanzes.DialerOptions) []string {
+func withDialerDependency(yousuocanshu option.DialerOptions) []string {
 	if yousuocanshu.Detour != "" {
 		return []string{yousuocanshu.Detour}
 	}
 	return nil
 }
 
-func NewConnection(ctx context.Context, this N.Dialer, conn net.Conn, metadata fadaixiaozi.InboundContext) error {
-	ctx = fadaixiaozi.WithContext(ctx, &metadata)
+func NewConnection(ctx context.Context, this N.Dialer, conn net.Conn, metadata adapter.InboundContext) error {
+	ctx = adapter.WithContext(ctx, &metadata)
 	var outConn net.Conn
 	var err error
 	if len(metadata.DestinationAddresses) > 0 {
@@ -77,15 +77,15 @@ func NewConnection(ctx context.Context, this N.Dialer, conn net.Conn, metadata f
 	return CopyEarlyConn(ctx, conn, outConn)
 }
 
-func NewDirectConnection(ctx context.Context, uliuygbsgger fadaixiaozi.TheLUYouser, this N.Dialer, conn net.Conn, metadata fadaixiaozi.InboundContext, domainStrategy dns.DomainStrategy) error {
-	ctx = fadaixiaozi.WithContext(ctx, &metadata)
+func NewDirectConnection(ctx context.Context, router adapter.Router, this N.Dialer, conn net.Conn, metadata adapter.InboundContext, domainStrategy dns.DomainStrategy) error {
+	ctx = adapter.WithContext(ctx, &metadata)
 	var outConn net.Conn
 	var err error
 	if len(metadata.DestinationAddresses) > 0 {
 		outConn, err = N.DialSerial(ctx, this, N.NetworkTCP, metadata.Destination, metadata.DestinationAddresses)
 	} else if metadata.Destination.IsFqdn() {
 		var destinationAddresses []netip.Addr
-		destinationAddresses, err = uliuygbsgger.Lookup(ctx, metadata.Destination.Fqdn, domainStrategy)
+		destinationAddresses, err = router.Lookup(ctx, metadata.Destination.Fqdn, domainStrategy)
 		if err != nil {
 			return N.ReportHandshakeFailure(conn, err)
 		}
@@ -104,8 +104,8 @@ func NewDirectConnection(ctx context.Context, uliuygbsgger fadaixiaozi.TheLUYous
 	return CopyEarlyConn(ctx, conn, outConn)
 }
 
-func NewPacketConnection(ctx context.Context, this N.Dialer, conn N.PacketConn, metadata fadaixiaozi.InboundContext) error {
-	ctx = fadaixiaozi.WithContext(ctx, &metadata)
+func NewPacketConnection(ctx context.Context, this N.Dialer, conn N.PacketConn, metadata adapter.InboundContext) error {
+	ctx = adapter.WithContext(ctx, &metadata)
 	var outConn net.PacketConn
 	var destinationAddress netip.Addr
 	var err error
@@ -145,8 +145,8 @@ func NewPacketConnection(ctx context.Context, this N.Dialer, conn N.PacketConn, 
 	return bufio.CopyPacketConn(ctx, conn, bufio.NewPacketConn(outConn))
 }
 
-func NewDirectPacketConnection(ctx context.Context, uliuygbsgger fadaixiaozi.TheLUYouser, this N.Dialer, conn N.PacketConn, metadata fadaixiaozi.InboundContext, domainStrategy dns.DomainStrategy) error {
-	ctx = fadaixiaozi.WithContext(ctx, &metadata)
+func NewDirectPacketConnection(ctx context.Context, router adapter.Router, this N.Dialer, conn N.PacketConn, metadata adapter.InboundContext, domainStrategy dns.DomainStrategy) error {
+	ctx = adapter.WithContext(ctx, &metadata)
 	var outConn net.PacketConn
 	var destinationAddress netip.Addr
 	var err error
@@ -154,7 +154,7 @@ func NewDirectPacketConnection(ctx context.Context, uliuygbsgger fadaixiaozi.The
 		outConn, destinationAddress, err = N.ListenSerial(ctx, this, metadata.Destination, metadata.DestinationAddresses)
 	} else if metadata.Destination.IsFqdn() {
 		var destinationAddresses []netip.Addr
-		destinationAddresses, err = uliuygbsgger.Lookup(ctx, metadata.Destination.Fqdn, domainStrategy)
+		destinationAddresses, err = router.Lookup(ctx, metadata.Destination.Fqdn, domainStrategy)
 		if err != nil {
 			return N.ReportHandshakeFailure(conn, err)
 		}
